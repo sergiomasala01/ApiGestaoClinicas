@@ -1,0 +1,35 @@
+## Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+bin/
+obj/
+out/
+
+## Rider
+.idea/
+
+## ASP.NET temp files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+## NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Others
+*.db
+*.DS_Store
+*.swp
+*.bak
+*.tmp
