@@ -8,12 +8,8 @@ namespace ApiGestaoClinicas.Models
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
         public string? Nome { get; set; }
-
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
-        public string? Sobrenome { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [DataType(DataType.Date)]
@@ -35,16 +31,20 @@ namespace ApiGestaoClinicas.Models
         [StringLength(3, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter 11 caracteres")]
         public string? TipoSanguineo { get; set; }
 
-        [Required(ErrorMessage = "Campo {0} é obrigatório")]
-        [Range(0, 3, ErrorMessage = "O campo {0} precisa ser {1} a {2} metros, Ex: 1.80")]
-        public decimal Altura { get; set; }
-
-        [Required(ErrorMessage = "Campo {0} é obrigatório")]
-        [Range(0, 400, ErrorMessage = "O campo {0} precisa ser {1} a {2} Kilos, Ex: 80")]
-        public decimal Peso { get; set; }
-
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
         public string? Endereco { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(40, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
+        public string? Especialidade { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter 2 caracteres")]
+        public string? SiglaEstadoCRM { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [StringLength(6, MinimumLength = 6, ErrorMessage = "O campo {0} precisa ter 6 caracteres")]
+        public string? CRM { get; set; }
     }
 }

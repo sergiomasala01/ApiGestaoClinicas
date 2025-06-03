@@ -14,7 +14,5 @@ namespace ApiGestaoClinicas.Data
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
-
-        //Microsoft.EntityFrameworkCore.Model.Validation[30000] <---- Aviso quando fiz a migration (algo sobre o range dos decimais)
     }
 }

@@ -9,12 +9,8 @@ namespace ApiGestaoClinicas.Models
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
         public string? Nome { get; set; }
-
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter {2} a {1} caracteres")]
-        public string? Sobrenome { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [DataType(DataType.Date)]
@@ -33,7 +29,7 @@ namespace ApiGestaoClinicas.Models
         public string? CPF { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(3, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter 11 caracteres")]
+        [StringLength(3, MinimumLength = 2, ErrorMessage = "O campo {0} precisa ter 2 ou 3 caracteres")]
         public string? TipoSanguineo { get; set; }
 
         [Required(ErrorMessage = "Campo {0} é obrigatório")]

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ApiGestaoClinicas.Migrations
 {
     /// <inheritdoc />
-    public partial class criandomodels : Migration
+    public partial class criandobancoemodels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,7 @@ namespace ApiGestaoClinicas.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,9 +52,10 @@ namespace ApiGestaoClinicas.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CPF = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
                     TipoSanguineo = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    Altura = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Peso = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Endereco = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    Endereco = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Especialidade = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    SiglaEstadoCRM = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CRM = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false)
                 },
                 constraints: table =>
                 {

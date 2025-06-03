@@ -20,7 +20,7 @@ namespace ApiGestaoClinicas.Models
         public decimal Valor { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Range(1, 600, ErrorMessage = "O campo {0} deve conter no minimo {1} e no maximo {2} minutos")]
+        [Range(1, 600, ErrorMessage = "O campo {0} deve conter no minimo {1} minuto e no maximo {2} minutos")]
         public int Duracao { get; set; }
     }
 }

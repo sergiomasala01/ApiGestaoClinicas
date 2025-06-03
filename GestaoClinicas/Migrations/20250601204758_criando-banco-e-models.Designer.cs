@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiGestaoClinicas.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20250530040045_criando-models")]
-    partial class criandomodels
+    [Migration("20250601204758_criando-banco-e-models")]
+    partial class criandobancoemodels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,9 @@ namespace ApiGestaoClinicas.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -74,13 +76,15 @@ namespace ApiGestaoClinicas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("Altura")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasMaxLength(14)
                         .HasColumnType("nvarchar(14)");
+
+                    b.Property<string>("CRM")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
 
                     b.Property<DateOnly>("DataNascimento")
                         .HasColumnType("date");
@@ -94,13 +98,20 @@ namespace ApiGestaoClinicas.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("Especialidade")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<decimal>("Peso")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("SiglaEstadoCRM")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
 
                     b.Property<string>("Sobrenome")
                         .IsRequired()
