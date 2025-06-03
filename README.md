@@ -1,4 +1,5 @@
 API Gestão de Clínicas
+
 🚀 Projeto em desenvolvimento com o objetivo de facilitar e otimizar a gestão de clínicas médicas, oferecendo uma API REST robusta e escalável construída em ASP.NET Core 9 com Entity Framework Core.
 
 ✅ Funcionalidades já implementadas
