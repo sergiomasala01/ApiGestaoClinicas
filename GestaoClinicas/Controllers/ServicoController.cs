@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using ApiGestaoClinicas.Data;
 using ApiGestaoClinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiGestaoClinicas.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/servicos")]
     public class ServicoController : ControllerBase
@@ -35,6 +37,7 @@ namespace ApiGestaoClinicas.Controllers
             return Ok(servico);
         }
 
+        [Authorize(Roles = "Admin, Recepcao")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -53,6 +56,7 @@ namespace ApiGestaoClinicas.Controllers
             return CreatedAtAction(nameof(GetServico), new { id = servico.Id }, servico);
         }
 
+        [Authorize(Roles = "Admin, Recepcao")]
         [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -81,6 +85,7 @@ namespace ApiGestaoClinicas.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

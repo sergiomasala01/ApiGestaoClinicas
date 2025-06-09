@@ -1,26 +1,12 @@
-using System.Text.Json.Serialization;
-using ApiGestaoClinicas.Data;
-using Microsoft.EntityFrameworkCore;
+using ApiGestaoClinicas.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
-    .AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
-
-
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-//Configurando contexto do banco
-builder.Services.AddDbContext<ApiDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder
+    .AddApiConfig()
+    .AddDbContextConfig()
+    .AddSwaggerConfig()
+    .AddIdentityConfig();
 
 var app = builder.Build();
 
@@ -31,6 +17,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

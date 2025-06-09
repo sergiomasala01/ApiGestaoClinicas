@@ -8,7 +8,7 @@ namespace ApiGestaoClinicas.Models
         Agendado,
         Cancelado,
         Atendido,
-        Faltou
+        Faltou,
     }
 
     public class Atendimento

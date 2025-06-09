@@ -1,10 +1,12 @@
 ﻿using ApiGestaoClinicas.Data;
 using ApiGestaoClinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiGestaoClinicas.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/medicos")]
     public class MedicoController : ControllerBase
@@ -49,7 +51,8 @@ namespace ApiGestaoClinicas.Controllers
 
             return Ok(medico);
         }
-         
+
+        [Authorize(Roles = "Admin, Recepcao")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -68,6 +71,7 @@ namespace ApiGestaoClinicas.Controllers
             return CreatedAtAction(nameof(GetMedico), new {id = medico.Id}, medico);
         }
 
+        [Authorize(Roles = "Admin, Recepcao")]
         [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -99,6 +103,7 @@ namespace ApiGestaoClinicas.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

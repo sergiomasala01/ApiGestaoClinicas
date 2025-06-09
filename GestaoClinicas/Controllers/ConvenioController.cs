@@ -1,10 +1,12 @@
 ﻿using ApiGestaoClinicas.Data;
 using ApiGestaoClinicas.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiGestaoClinicas.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/convenios")]
     public class ConvenioController : ControllerBase
@@ -36,6 +38,7 @@ namespace ApiGestaoClinicas.Controllers
             return Ok(convenio);
         }
 
+        [Authorize(Roles = "Admin, Recepcao")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesDefaultResponseType]
@@ -53,6 +56,7 @@ namespace ApiGestaoClinicas.Controllers
             return CreatedAtAction(nameof(GetConvenio), new { id = convenio.Id }, convenio);
         }
 
+        [Authorize(Roles = "Admin, Recepcao")]
         [HttpPut("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -83,6 +87,7 @@ namespace ApiGestaoClinicas.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
